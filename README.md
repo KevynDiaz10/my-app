@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Herramientas
+Prisma: connect the server whit dashboard with mysql
+Shadcn: for the components
+ClerkJs: for the auth
+
+Prisma define su modelo de datos e interactúa con la base de datos MySQL para administrar la persistencia de los datos.
+
+Next.js maneja la lógica y la representación del frontend, al mismo tiempo que actúa como backend para su aplicación.
+
+Clerk proporciona funciones de autenticación y gestión de usuarios, garantizando un acceso seguro a su aplicación.
+
