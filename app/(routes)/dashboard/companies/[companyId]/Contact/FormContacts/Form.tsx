@@ -22,6 +22,10 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import axios from "axios";
+import { toast } from "@/hooks/use-toast";
+import { useParams, useRouter } from "next/navigation";
+import { CompanyFormProps } from "../../Update/FormUpdate.types";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -44,7 +48,6 @@ export function DialogButton() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    
   }
   return (
     <Dialog>
