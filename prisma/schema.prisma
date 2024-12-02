@@ -44,18 +44,19 @@ model Contact {
   company Company? @relation(fields: [companyId], references: [id], onDelete: Cascade)
 
   @@index([companyId])
-
 }
 
 model Event {
   id         String   @id @default(uuid())
+
   companyId  String
+
   title      String
   start      DateTime
   allDay     Boolean
   timeFormat String
 
-  company Company @relation(fields: [companyId], references: [id])
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

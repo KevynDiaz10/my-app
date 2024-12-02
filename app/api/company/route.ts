@@ -1,11 +1,12 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+
 //routes static
 
 
 
-//create 
+//create company 
 export async function POST(req: Request) {
   try {
     const { userId } = auth();

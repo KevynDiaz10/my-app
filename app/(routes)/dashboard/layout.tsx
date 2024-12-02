@@ -5,7 +5,7 @@ import React from "react";
 export default function layout({ children }: { children: React.ReactElement }) {
   return (
     <div className="flex w-full h-full">
-      <div className="hidden lg:block w-72 h-full lg:fixed">
+      <div className="hidden lg:block w-72 h-full lg:fixed dark:bg-background">
         <SidebarRoutes />
       </div>
       <div className="w-full lg:ml-72">

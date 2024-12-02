@@ -1,4 +1,3 @@
-
 import{ db } from '@/lib/db'
 import { DataTable } from './DataTable'
 import { ColumnDef } from '@tanstack/react-table'

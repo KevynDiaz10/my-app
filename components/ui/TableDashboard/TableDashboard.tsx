@@ -33,6 +33,7 @@ import {
 import CustomIcon from "../CustomIcon/CustomIcon";
 import { BarChart, TableOfContents } from "lucide-react";
 import { Badge } from "../badge";
+import { useState } from "react";
 
 const data: Payment[] = [
   {
@@ -69,6 +70,111 @@ const data: Payment[] = [
     status: "failed",
     email: "carmella@hotmail.com",
     name: "kevyn",
+  },
+  {
+    id: "lkwe84i9",
+    amount: 654,
+    status: "success",
+    email: "jane99@yahoo.com",
+    name: "jane",
+  },
+  {
+    id: "nd34euv4",
+    amount: 782,
+    status: "failed",
+    email: "john.doe@gmail.com",
+    name: "john",
+  },
+  {
+    id: "hd7e8th2",
+    amount: 520,
+    status: "success",
+    email: "alice@example.com",
+    name: "alice",
+  },
+  {
+    id: "pw9u1jx3",
+    amount: 660,
+    status: "processing",
+    email: "bob@example.com",
+    name: "bob",
+  },
+  {
+    id: "3kle8nt5",
+    amount: 230,
+    status: "success",
+    email: "charlie@example.com",
+    name: "charlie",
+  },
+  {
+    id: "jhuo74wa",
+    amount: 490,
+    status: "failed",
+    email: "dave@example.com",
+    name: "dave",
+  },
+  {
+    id: "pe97fjk6",
+    amount: 300,
+    status: "success",
+    email: "eve@example.com",
+    name: "eve",
+  },
+  {
+    id: "pl3jt49q",
+    amount: 780,
+    status: "processing",
+    email: "frank@example.com",
+    name: "frank",
+  },
+  {
+    id: "kfj9a7u2",
+    amount: 900,
+    status: "success",
+    email: "grace@example.com",
+    name: "grace",
+  },
+  {
+    id: "md8klz01",
+    amount: 450,
+    status: "failed",
+    email: "hank@example.com",
+    name: "hank",
+  },
+  {
+    id: "rqw4ta93",
+    amount: 370,
+    status: "success",
+    email: "ivy@example.com",
+    name: "ivy",
+  },
+  {
+    id: "kld8jsh1",
+    amount: 670,
+    status: "processing",
+    email: "jack@example.com",
+    name: "jack",
+  },
+  {
+    id: "nd4e3kv4",
+    amount: 555,
+    status: "success",
+    email: "kate@example.com",
+    name: "kate",
+  },
+  {
+    id: "ah8me5kd",
+    amount: 820,
+    status: "failed",
+    email: "leo@example.com",
+    name: "leo",
+  },
+  {
+    id: "pq9w3ah4",
+    amount: 310,
+    status: "success",
+    email: "maya@example.com",
+    name: "maya",
   },
 ];
 
@@ -148,6 +254,10 @@ export default function TableDashboard() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 5,
+  });
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
@@ -159,10 +269,12 @@ export default function TableDashboard() {
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    onPaginationChange: setPagination,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {
+      pagination,
       sorting,
       columnFilters,
       columnVisibility,
@@ -264,7 +376,7 @@ export default function TableDashboard() {
         </div>
         <div className="flex items-center justify-end space-x-2 py-4">
           <div className="flex-1 text-sm text-muted-foreground">
-            {table.getFilteredSelectedRowModel().rows.length} of{" "}
+            {table.getFilteredSelectedRowModel().rows.length} of{""}
             {table.getFilteredRowModel().rows.length} row(s) selected.
           </div>
           <div className="space-x-2">

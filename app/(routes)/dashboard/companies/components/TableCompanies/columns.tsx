@@ -18,6 +18,9 @@ export type Payment = {
   phone: string;
   country: string;
 };
+import axios from "axios";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -45,8 +48,22 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "actions",
     header: "Actions",
     cell: ({ row }) => {
+      const router = useRouter();
       const payment = row.original;
-
+      const onDeleteCompany = async () => {
+        try {
+          axios.delete(`/api/company/${payment.id}`).then(()=>{
+          
+          toast({
+            title: "Delete company",
+            className: "bg-nextui-succes/60",
+            duration: 2000,
+          });
+          router.refresh();})
+        } catch (error) {
+          console.log(error)
+        }
+      };
       return (
         <>
           <DropdownMenu>
@@ -64,7 +81,12 @@ export const columns: ColumnDef<Payment>[] = [
                 Copy ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem><Link href={`/dashboard/companies/${payment.id}`}>Edit</Link></DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href={`/dashboard/companies/${payment.id}`}>Edit</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem >
+                <p onClick={() => onDeleteCompany()}>delete</p>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </>

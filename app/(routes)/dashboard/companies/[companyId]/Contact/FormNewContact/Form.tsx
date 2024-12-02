@@ -1,13 +1,5 @@
 "use client";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -25,34 +17,55 @@ import { z } from "zod";
 import axios from "axios";
 import { toast } from "@/hooks/use-toast";
 import { useParams, useRouter } from "next/navigation";
-import { CompanyFormProps } from "../../Update/FormUpdate.types";
+import { CirclePlus } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
   role: z.string(),
   phone: z.string(),
-  email: z.string()
-
+  email: z.string(),
 });
+
 export function DialogButton() {
+  const [openModalCreate, setOpenModalCreate] = useState(false);
+  const params = useParams<{ companyId: string }>();
+  const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      role:"",
+      role: "",
       phone: "",
-      email: ""
+      email: "",
     },
   });
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      axios
+        .post(`/api/company/${params.companyId}/contact`, values)
+        .then(() => {
+          toast({ title: "Contact created", className: "bg-nextui-succes/60"});
+          setOpenModalCreate(false);
+          router.refresh();
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
-    <Dialog>
+    <Dialog open={openModalCreate} onOpenChange={setOpenModalCreate}>
       <DialogTrigger asChild>
-        <Button variant="outline">Create new contact</Button>
+        <Button
+          variant="outline"
+          className="bg-nextui-succes m-2 hover:bg-nextui-succes/70 text-background hover:text-background"
+        >
+          <CirclePlus width={16} height={16} />
+          New contact
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <Form {...form}>
@@ -62,13 +75,10 @@ export function DialogButton() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="Name..." {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -78,13 +88,10 @@ export function DialogButton() {
               name="role"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Role</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="Role" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -94,13 +101,10 @@ export function DialogButton() {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Phone</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="+58 424 139 6781" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -110,13 +114,10 @@ export function DialogButton() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="Email address" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

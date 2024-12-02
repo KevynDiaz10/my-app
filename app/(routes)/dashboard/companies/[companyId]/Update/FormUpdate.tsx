@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { CompanyFormProps } from "./FormUpdate.types";
 import { z } from "zod";
@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { Delete, DeleteIcon } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string(),
@@ -48,22 +49,21 @@ export default function FormUpdate(props: CompanyFormProps) {
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      axios.patch(`/api/company/${company.id}`, values)
+      axios.patch(`/api/company/${company.id}`, values);
       toast({
-      title: "Scheduled: Catch up ",
-      className: "bg-nextui-succes/60",
-      duration: 2000,
-    });
-    router.refresh()
+        title: "Update sucess",
+        className: "bg-nextui-succes/60",
+        duration: 2000,
+      });
+      router.refresh();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    
   }
   return (
     <div>
       <Card>
-        <CardHeader className=" items-center">
+        <CardHeader className="items-center">
           <CardTitle>Update company</CardTitle>
         </CardHeader>
         <CardContent>
@@ -80,9 +80,6 @@ export default function FormUpdate(props: CompanyFormProps) {
                         <FormControl>
                           <Input placeholder="shadcn" {...field} />
                         </FormControl>
-                        <FormDescription>
-                          This is your public display name.
-                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     </>
@@ -98,9 +95,6 @@ export default function FormUpdate(props: CompanyFormProps) {
                         <FormControl>
                           <Input {...field} />
                         </FormControl>
-                        <FormDescription>
-                          This is your public display name.
-                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     </>
@@ -116,9 +110,7 @@ export default function FormUpdate(props: CompanyFormProps) {
                         <FormControl>
                           <Input {...field} />
                         </FormControl>
-                        <FormDescription>
-                          This is your public display name.
-                        </FormDescription>
+
                         <FormMessage />
                       </FormItem>
                     </>
@@ -134,9 +126,6 @@ export default function FormUpdate(props: CompanyFormProps) {
                         <FormControl>
                           <Input {...field} />
                         </FormControl>
-                        <FormDescription>
-                          This is your public display name.
-                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     </>
@@ -152,9 +141,6 @@ export default function FormUpdate(props: CompanyFormProps) {
                         <FormControl>
                           <Input placeholder="shadcn" {...field} />
                         </FormControl>
-                        <FormDescription>
-                          This is your public display name.
-                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     </>
@@ -168,11 +154,10 @@ export default function FormUpdate(props: CompanyFormProps) {
                 Update
               </Button>
               <Button
-                type="reset"
-                onClick={() => router.push("/dashboard/companies")}
-                className="bg-nextui-danger m-2 hover:bg-nextui-danger/70"
+                onClick={() => (router.back())}
+                className="bg-nextui-danger hover:bg-nextui-danger/70"
               >
-                Cancelar
+                Volver
               </Button>
             </form>
           </Form>

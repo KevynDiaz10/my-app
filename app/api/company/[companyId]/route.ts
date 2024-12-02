@@ -19,7 +19,7 @@ export async function PATCH(
     const company = await db.company.update({
       where: {
         id: companyId,
-        userId,
+        userId
       },
       data: {
         ...values,
@@ -33,31 +33,27 @@ export async function PATCH(
   }
 }
 
-//create contacts
-export async function POST(
+export async function DELETE(
   req: Request,
   { params }: { params: { companyId: string } }
 ) {
   try {
     const { userId } = auth();
-    const values = await req.json();
+    const { companyId } = params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const company = await db.company.findUnique({
-      where: { id: params.companyId },
+    const deletedCompany = await db.company.delete({
+      where: {
+        id: companyId,
+      },
     });
 
-    if (!company) {
-      return new NextResponse("company not found");
-    }
-    const contact = await db.contact.create({
-      data: { companyId: params.companyId, ...values },
-    });
-    return NextResponse.json(contact);
+    return NextResponse.json(deletedCompany);
   } catch (error) {
-    console.log(error)
+    console.log("[DELETE COMPANY ID]", error);
+    return new NextResponse("Internal Error", { status: 500 });
   }
 }
