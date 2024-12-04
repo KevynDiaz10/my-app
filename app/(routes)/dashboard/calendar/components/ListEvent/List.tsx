@@ -33,6 +33,7 @@ export default function List(props: listEventProps) {
             router.refresh();
           });
         } catch (error) {
+          console.log(error)
           toast({
             title: "Error al eliminar event",
             variant: "destructive",
