@@ -49,7 +49,7 @@ export default async function ListContact(props: CompanyProps) {
                   width={12}
                   height={12}
                   className="m-2 hover:text-nextui-danger transition ease-in-out delay-150 duration-100"
-                  onClick={()=>{deleteContact(data.id)}}
+                  onClick={()=>{deleteContact(data.id)} }
                 />
             </div>
             <CardContent className="flex justify-between p-4 items-center">
