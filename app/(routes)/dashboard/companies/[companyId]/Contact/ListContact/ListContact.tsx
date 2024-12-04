@@ -1,6 +1,5 @@
 "use client"
 import { CompanyProps } from "./ListContact.types";
-import { db } from "@/lib/db";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Mail, Phone, X } from "lucide-react";
 import axios from "axios";
@@ -11,7 +10,7 @@ import Swal from "sweetalert2";
 export default async function ListContact(props: CompanyProps) {
   const { contacts } = props;
   const router = useRouter()
-  const deleteContact = (contactId: any)=>{
+  const deleteContact = (contactId: string)=>{
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -27,7 +26,6 @@ export default async function ListContact(props: CompanyProps) {
             .delete(`/api/contact/${contactId}`)
             .then(() => {
               toast({ title: "Evento Eliminado" });
-              router.refresh();
             });
         } catch (error) {
           toast({
@@ -38,6 +36,7 @@ export default async function ListContact(props: CompanyProps) {
         }
       }
     });
+    router.refresh();
   }; 
 
   return (

@@ -62,6 +62,7 @@ export default function Calendar(props: CalendarProps) {
           router.refresh();
         })
         .catch((error) => {
+          console.log(error)
           toast({
             title: "Error al crear el event",
             variant: "destructive",
@@ -98,6 +99,7 @@ export default function Calendar(props: CalendarProps) {
               router.refresh();
             });
         } catch (error) {
+          console.log(error)
           toast({
             title: "Error al eliminar event",
             variant: "destructive",
