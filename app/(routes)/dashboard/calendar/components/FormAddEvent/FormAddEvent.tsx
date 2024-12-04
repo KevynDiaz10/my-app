@@ -28,11 +28,10 @@ const formSchema = z.object({
 
 export function FormEvent(props: FormEventProps) {
     const { companies, setNewEvent, setOnSaveNewEvent, setOpen } = props
-    const [selectedCompany, setSelectedCompany] = useState({
+    const [,setSelectedCompany] = useState({
         name: "",
         id: ""
     })
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
