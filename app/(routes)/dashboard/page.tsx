@@ -1,8 +1,7 @@
-import { UserButton } from "@clerk/nextjs";
+
 import { BookOpenCheck, UsersRound, Waypoints } from "lucide-react";
 
-import { users } from "@/components/ui/TableDashboard/data";
-import TableDashboard, { Payment } from "@/components/ui/TableDashboard/TableDashboard";
+import TableDashboard from "@/components/ui/TableDashboard/TableDashboard";
 import Graphy from "@/components/ui/Graphy/Graphy";
 import CardSummary from "./components/cardSummary/CardSummary";
 
@@ -29,101 +28,9 @@ const DataCardSummary = [
     tooltipText: "See all of the bounce rate"
   },
 ]
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "pedro"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "jose"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "kevyn"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "pedro"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "jose"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "kevyn"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "pedro"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "jose"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "kevyn"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "pedro"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "jose"
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-      name: "kevyn"
-    },
-    // ...
-  ]
-}
 
 
 export default async function Home() {
-  const data = await getData()
- 
   return (
     <div>
       <h2 className="text-2xl mb-4">dashboard</h2>

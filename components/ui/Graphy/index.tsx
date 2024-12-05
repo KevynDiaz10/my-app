@@ -1,1 +1,1 @@
-export * "./Graphy"
+export * from "./Graphy"

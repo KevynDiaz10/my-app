@@ -20,9 +20,10 @@ export type Payment = {
 };
 import axios from "axios";
 import { toast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
+
 
 export const columns: ColumnDef<Payment>[] = [
+
   {
     accessorKey: "name",
     header: "Name",
@@ -48,18 +49,16 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "actions",
     header: "Actions",
     cell: ({ row }) => {
-      const router = useRouter();
       const payment = row.original;
       const onDeleteCompany = async () => {
         try {
           axios.delete(`/api/company/${payment.id}`).then(()=>{
-          
           toast({
             title: "Delete company",
             className: "bg-nextui-succes/60",
             duration: 2000,
           });
-          router.refresh();})
+        })
         } catch (error) {
           console.log(error)
         }

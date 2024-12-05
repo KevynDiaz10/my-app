@@ -1,4 +1,4 @@
-import { BarChart4, Bolt, Building2, CalendarSearch, CircleHelp, CircleHelpIcon, GlobeLock, Home, House, Icon, LucideSettings, SettingsIcon } from "lucide-react";
+import { Bolt, Building2, CalendarSearch, CircleHelpIcon, GlobeLock, House } from "lucide-react";
 
 export const DataGeneralSidebar = [
     {

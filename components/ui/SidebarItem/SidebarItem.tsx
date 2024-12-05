@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
-import { Icon } from "next/dist/lib/metadata/types/metadata-types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";

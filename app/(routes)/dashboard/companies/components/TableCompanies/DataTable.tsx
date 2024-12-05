@@ -5,7 +5,6 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
-  Updater,
   useReactTable,
 } from "@tanstack/react-table";
 import {
@@ -98,8 +97,5 @@ export function DataTable<TData, TValue>({
       </Table>
     </div>
   );
-}
-function setColumnFilters(updaterOrValue: Updater<ColumnFiltersState>): void {
-  throw new Error("Function not implemented.");
 }
 

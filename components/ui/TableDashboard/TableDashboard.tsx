@@ -31,7 +31,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import CustomIcon from "../CustomIcon/CustomIcon";
-import { BarChart, TableOfContents } from "lucide-react";
+import { TableOfContents } from "lucide-react";
 import { Badge } from "../badge";
 import { useState } from "react";
 

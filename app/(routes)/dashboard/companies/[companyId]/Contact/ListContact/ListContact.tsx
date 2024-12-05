@@ -1,5 +1,5 @@
 "use client"
-import { CompanyProps } from "./ListContact.types";
+import {listContactsProps } from "./ListContact.types";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Mail, Phone, X } from "lucide-react";
 import axios from "axios";
@@ -7,7 +7,9 @@ import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-export default async function ListContact(props: CompanyProps) {
+
+
+export default function ListContact(props: listContactsProps) {
   const { contacts } = props;
   const router = useRouter()
   const deleteContact = (contactId: string)=>{

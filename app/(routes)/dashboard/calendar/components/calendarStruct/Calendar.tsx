@@ -77,10 +77,10 @@ export default function Calendar(props: CalendarProps) {
       });
       setOnSaveNewEvent(false);
     }
-  }, [onSaveNewEvent, selectedItem]);
+  }, [onSaveNewEvent, selectedItem, event]);
 
-//exportar esta funcion para probar
-  const handleEventClick = (seleted: any) =>{
+  interface SelectedEvent { event: { _def: { publicId: string; }; }; }
+  const handleEventClick = (seleted: SelectedEvent) =>{
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -96,7 +96,6 @@ export default function Calendar(props: CalendarProps) {
             .delete(`/api/event/${seleted.event._def.publicId}`)
             .then(() => {
               toast({ title: "Evento Eliminado" });
-              router.refresh();
             });
         } catch (error) {
           console.log(error)
@@ -107,6 +106,7 @@ export default function Calendar(props: CalendarProps) {
         }
       }
     });
+    router.refresh();
   };
 
   return (

@@ -7,13 +7,10 @@ import {
   Github,
   Instagram,
   Linkedin,
-  Locate,
   Mail,
   MailCheck,
   MapPin,
-  MessageCircle,
   Phone,
-  PhoneCall,
 } from "lucide-react";
 
 export default function FooterHome() {

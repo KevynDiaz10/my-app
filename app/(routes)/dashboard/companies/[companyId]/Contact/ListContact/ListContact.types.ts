@@ -1,6 +1,6 @@
 import { Company, Contact } from "@prisma/client";
 
-export type CompanyProps = {
+export type listContactsProps = {
   company: Company;
   contacts: Contact[];
 };

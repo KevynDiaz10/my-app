@@ -7,7 +7,6 @@ import { Card, CardHeader } from "@/components/ui/card";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,7 +19,6 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Delete, DeleteIcon } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string(),

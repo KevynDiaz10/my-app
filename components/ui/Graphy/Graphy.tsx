@@ -2,23 +2,17 @@
 import { cn } from "@/lib/utils";
 import CustomIcon from "../CustomIcon/CustomIcon";
 import {
-  BarChart,
-  ChartNoAxesColumn,
   ChartNoAxesCombined,
   MoveDownRight,
   MoveUpRight,
   TrendingUp,
 } from "lucide-react";
 import {
-  Line,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Legend,
   ResponsiveContainer,
   Tooltip,
   AreaChart,
-  LineChart,
   Area,
 } from "recharts";
 

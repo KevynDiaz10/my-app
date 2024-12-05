@@ -62,6 +62,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
         setOpenModalCreate(false);
       });
     } catch (error) {
+      console.log(error)
       toast({
         title: "Something went wrong",
         variant: "destructive",

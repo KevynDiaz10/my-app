@@ -14,5 +14,7 @@ export async function DELETE(
     }
     const deleteEvent = await db.event.delete({ where: { id: eventId } });
     return NextResponse.json(deleteEvent);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
